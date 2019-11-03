@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Morphing Page Transition | Demo 1 </title>
+		<meta name="description" content="A page transition where one SVG path is morphed into another" />
+		<meta name="keywords" content="page transition, svg, morph, path, javascript, web design, web dev" />
+		<link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Spectral:200" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="pater/pater.css" />
+		<script>document.documentElement.className = 'js';</script>
+		<script type="text/javascript" src="js/theater.js"></script>
+	</head>
+	<body class="demo-1 loading">
+		<main>
+			<div class="content content--intro">
+				<div class="content__inner">
+					<h2 class="content__title" id="cont1"></h2>
+					<h3 class="content__subtitle" id="cont2" style="font-family: KaiTi;"></h3>
+					<h4 class="content__subtitle" id="cont3"></h4>
+					<h4 class="content__subtitle" id="cont4"></h4>
+					<h4 class="content__subtitle" id="cont5"></h4>
+					<h4 class="content__subtitle" id="cont6"></h4>
+					<a href="#" class="enter" id="cont7"></a>
+					<script type="text/javascript">
+						(function () {
+							"use strict";
+							var theater = new TheaterJS();
+							theater
+								.describe("Cont1", .8, "#cont1")
+								.describe("Cont2", .85, "#cont2")
+								.describe("Cont3", .85, "#cont3")
+								.describe("Cont4", .8, "#cont4")
+								.describe("Cont5", .85, "#cont5")
+								.describe("Cont6", .85, "#cont6")
+								.describe("Cont7", .85, "#cont7");
+							theater
+								.on("say:start, erase:start", function (eventName) {
+									var self    = this,
+										current = self.current.voice;
+
+										self.utils.addClass(current, "saying");
+								})
+								.on("say:end, erase:end", function (eventName) {
+									var self    = this,
+										current = self.current.voice;
+
+									self.utils.removeClass(current, "saying");
+								});
+							theater
+								.write("Cont1:项目简介", 300)
+								.write("Cont2:开发人员：",300,"Invincible", 300)
+								.write("Cont3:开发语言：",300,"HTML、JavaScript", 300)
+								.write("Cont4:开发背景：",300,"开发该页面的想法萌生于2019年9月28日，准备用来给我姐王甜甜", 1200, -3, 1000, "王俪雅",600,"庆生。（手动狗头保命）", 300)
+								.write("Cont5:开发过程：",300,"10月9日初步制定设计思路，后续进行了若干次修改。此后，因实验室事务繁忙，开发过程有所延缓。11月10日正式完成开发部署。", 300)
+								.write("Cont6:页面内容：",300,"自己看吧^_^");
+							setInterval(function(){
+								var str = document.getElementById('cont6').innerText;
+								var str2 = document.getElementById('cont7').innerText;
+								if(str.search("_") != -1 && str2.search("点") == -1){
+									document.getElementById('cont7').setAttribute('style','display:inline');
+									document.getElementById('cont7').disabled = false;
+									theater
+										.write("Cont7:点击这里继续");
+								}
+							}, 500);
+						})();
+					</script>
+				</div>
+				<div class="shape-wrap">
+					<svg class="shape" width="100%" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
+						<path d="M -44,-50 C -52.71,28.52 15.86,8.186 184,14.69 383.3,22.39 462.5,12.58 638,14 835.5,15.6 987,6.4 1194,13.86 1661,30.68 1652,-36.74 1582,-140.1 1512,-243.5 15.88,-589.5 -44,-50 Z" pathdata:id="M -44,-50 C -137.1,117.4 67.86,445.5 236,452 435.3,459.7 500.5,242.6 676,244 873.5,245.6 957,522.4 1154,594 1593,753.7 1793,226.3 1582,-126 1371,-478.3 219.8,-524.2 -44,-50 Z"></path>
+					</svg>
+				</div>
+			</div><!-- /content -->
+			<div class="content content--fixed">
+				<div class="content__inner">
+					<nav class="menu">
+						<a class="menu__item" href="#">Spring/Summer 2018</a>
+						<a class="menu__item" href="#">Autumn/Winter 2018</a>
+					</nav>
+					<a class="next-demo" href="index2.html">Next demo <svg class="icon icon--arrow-right"><use xlink:href="#icon-arrow"></use></svg></a>
+				</div>
+			</div>
+			<script src="js/imagesloaded.pkgd.min.js"></script>
+			<script src="js/charming.min.js"></script>
+			<script src="js/anime.min.js"></script>
+			<script src="js/demo1.js"></script>
+		</main>
+	</body>
+</html>
