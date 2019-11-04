@@ -36,10 +36,16 @@
 				cancelText: '不方便'
 			}).then(() => {
 				toggleSound();
+				var offsetX = $("#loveHeart").width() / 2;
+				var offsetY = $("#loveHeart").height() / 2 - 55;
+				start();
 				console.log('已确认');
 			}).catch(() => {
+				var offsetX = $("#loveHeart").width() / 2;
+				var offsetY = $("#loveHeart").height() / 2 - 55;
+				start();
 				console.log('已取消')
-		})}, 500);
+		})}, 800);
 		anime({
 			targets: DOM.intro,
 			duration: 1100,
@@ -126,6 +132,20 @@
 			document.addEventListener('YixinJSBridgeReady', function() {
 				audio.play();
 			}, false);
+		}
+	}
+
+	function start(){
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 1000);
 		}
 	}
 

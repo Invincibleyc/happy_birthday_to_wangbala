@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Morphing Page Transition | Demo 1 </title>
+		<title>Happy Birthday to Bala Wang</title>
 		<meta name="description" content="A page transition where one SVG path is morphed into another" />
 		<meta name="keywords" content="page transition, svg, morph, path, javascript, web design, web dev" />
 		<link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Spectral:200" rel="stylesheet">
@@ -38,12 +38,12 @@
 							var theater = new TheaterJS();
 							theater
 								.describe("Cont1", .8, "#cont1")
-								.describe("Cont2", .85, "#cont2")
-								.describe("Cont3", .85, "#cont3")
+								.describe("Cont2", .87, "#cont2")
+								.describe("Cont3", .87, "#cont3")
 								.describe("Cont4", .8, "#cont4")
-								.describe("Cont5", .85, "#cont5")
-								.describe("Cont6", .85, "#cont6")
-								.describe("Cont7", .85, "#cont7");
+								.describe("Cont5", .87, "#cont5")
+								.describe("Cont6", .87, "#cont6")
+								.describe("Cont7", .87, "#cont7");
 							theater
 								.on("say:start, erase:start", function (eventName) {
 									var self    = this,
@@ -89,12 +89,22 @@
 				Your browser does not support this audio format.
 			</audio>
 			<div class="content content--fixed">
-				<div class="content__inner">
-					<nav class="menu">
-						<a class="menu__item" href="#">Spring/Summer 2018</a>
-						<a class="menu__item" href="#">Autumn/Winter 2018</a>
-					</nav>
-					<a class="next-demo" href="index2.html">Next demo <svg class="icon icon--arrow-right"><use xlink:href="#icon-arrow"></use></svg></a>
+				<div class="content__inner" id="loveHeart" style="height: 60vh;">
+						<canvas id="garden"></canvas>
+						<div id="words">
+							<div id="messages">
+							</br>
+							</br>
+							</br>
+							</br>
+								You've been in the world for
+								<div id="elapseClock"></div>
+							</div>
+							<div id="loveu">
+								Wish you a year full of happiness.<br/>
+								<div class="signature">- Invincible</div>
+							</div>
+						</div>
 				</div>
 			</div>
 			<script src="js/imagesloaded.pkgd.min.js"></script>
@@ -102,6 +112,9 @@
 			<script src="js/anime.min.js"></script>
 			<script src="js/demo1.js"></script>
 			<script type="text/javascript" src="js/message.js"></script>
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script type="text/javascript" src="js/garden_dev.js"></script>
+		    <script type="text/javascript" src="js/functions_dev.js"></script>
 			<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		</main>
 	</body>
