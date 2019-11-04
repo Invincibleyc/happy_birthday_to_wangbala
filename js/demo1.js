@@ -28,7 +28,16 @@
 	const navigate = () => {
 		if ( loaded ) return;
 		loaded = true;
-
+		setTimeout(confirm({
+				title: '友情提示',
+				content: '该页面有bgm，宁方便播放吗？',
+				doneText: '方便',
+				cancelText: '不方便'
+			}).then(() => {
+				console.log('已确认');
+			}).catch(() => {
+				console.log('已取消')
+		}), 3000);
 		anime({
 			targets: DOM.intro,
 			duration: 1100,

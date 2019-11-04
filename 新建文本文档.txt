@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			@font-face {
+				font-family: myfont;
+				src: url('yyqx.ttf') format("truetype");
+			}
+			.saying:after{content:"|";}
+		</style>
+	</head>
+	<body class="demo-1 loading">
+		<main>
+			<div class="content content--intro">
+				<div class="content__inner">
+					<h2 class="content__title" id="cont1" style="font-family: myfont"></h2>
+					<h3 class="content__subtitle" id="cont2" style="font-family: myfont"></h3>
+					<h4 class="content__subtitle" id="cont3" style="font-family: myfont"></h4>
+					<h4 class="content__subtitle" id="cont4" style="font-family: myfont"></h4>
+					<h4 class="content__subtitle" id="cont5" style="font-family: myfont"></h4>
+					<h4 class="content__subtitle" id="cont6" style="font-family: myfont"></h4>
+					<a href="#" class="enter" id="cont7" style="font-family: myfont"></a>
+					<script type="text/javascript">
+						var flag = 0;
+						(function () {
+							"use strict";
+							var theater = new TheaterJS();
+							theater
+								.describe("Cont1", .8, "#cont1")
+								.describe("Cont2", .85, "#cont2")
+								.describe("Cont3", .85, "#cont3")
+								.describe("Cont4", .8, "#cont4")
+								.describe("Cont5", .85, "#cont5")
+								.describe("Cont6", .85, "#cont6")
+								.describe("Cont7", .85, "#cont7");
+							theater
+								.on("say:start, erase:start", function (eventName) {
+									var self    = this,
+										current = self.current.voice;
+
+										self.utils.addClass(current, "saying");
+								})
+								.on("say:end, erase:end", function (eventName) {
+									var self    = this,
+										current = self.current.voice;
+
+									self.utils.removeClass(current, "saying");
+								});
+							theater
+								.write("Cont1:页面简介", 300)
+								.write("Cont2:开发人员：",300,"Invincible", 300)
+								.write("Cont3:开发语言：",300,"HTML、JavaScript", 300)
+								.write("Cont4:开发背景：",300,"开发该页面的想法萌生于2019年9月28日，准备用来给我姐王甜甜", 1200, -5, 1000, "我姐王俪雅",600,"庆生。（手动狗头保命）", 300)
+								.write("Cont5:开发过程：",300,"10月9日初步制定设计思路，后续进行了若干次修改。此后，因实验室事务繁忙，开发过程有所延缓。11月10日正式完成开发部署。", 300)
+								.write("Cont6:页面内容：",300,"自己看吧，献丑了^_^");
+							setInterval(function(){
+								var str = document.getElementById('cont6').innerText;
+								var str2 = document.getElementById('cont7').innerText;
+								if(str.search("_") != -1 && str2.length == 0){
+									document.getElementById('cont7').setAttribute('style','display:inline; font-family: myfont;');
+									document.getElementById('cont7').disabled = false;
+									theater
+										.write("Cont7:点击这里继续");
+								}
+							}, 1000);
+						})();
+					</script>
+				</div>
+			</div><!-- /content -->
+		</main>
+	</body>
+</html>
