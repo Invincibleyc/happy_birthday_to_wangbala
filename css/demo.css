@@ -21,7 +21,7 @@ body {
 	--color-link-hover: #ff963b;
 	--color-enter: #fff;
 	--color-title: #fff;
-	--color-subtitle: #5f5f5f;
+	--color-subtitle: #afafaf;
 	--color-menu-item: #000;
 	--color-menu-item-hover: #ff963b;
 	--color-menu-item-hover-alt: #8544da;
@@ -101,7 +101,7 @@ body {
 	margin: -25px 0 0 -25px;
 	pointer-events: none;
 	background: #333;
-	background: var(--color-text);
+	background: #fff;
 	border-radius: 50%;
 	animation: loaderAnim 0.5s ease infinite alternate forwards;
 }

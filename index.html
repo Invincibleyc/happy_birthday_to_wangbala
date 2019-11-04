@@ -61,13 +61,14 @@
 								.write("Cont1:页面简介", 300)
 								.write("Cont2:开发人员：",300,"Invincible", 300)
 								.write("Cont3:开发语言：",300,"HTML、JavaScript", 300)
-								.write("Cont4:开发背景：",300,"开发该页面的想法萌生于2019年9月28日，准备用来给我姐王甜甜", 1200, -5, 1000, "我姐王俪雅",600,"庆生。（手动狗头保命）", 300)
+								.write("Cont4:开发背景：",300,"开发该页面的想法萌生于2019年9月28日，准备用来给我姐王甜甜", 1200, -5, 1000, "我姐", 600, "王俪雅",600,"庆生。（手动狗头保命）", 300)
 								.write("Cont5:开发过程：",300,"10月9日初步制定设计思路，后续进行了若干次修改。此后，因实验室事务繁忙，开发过程有所延缓。11月10日正式完成开发部署。", 300)
 								.write("Cont6:页面内容：",300,"自己看吧，献丑了^_^");
 							setInterval(function(){
 								var str = document.getElementById('cont6').innerText;
 								var str2 = document.getElementById('cont7').innerText;
-								if(str.search("_") != -1 && str2.length == 0){
+								if(str.search("_") != -1 && str2.length == 0 && flag == 0){
+									flag = 1;
 									document.getElementById('cont7').setAttribute('style','display:inline; font-family: myfont;');
 									document.getElementById('cont7').disabled = false;
 									theater
@@ -83,6 +84,10 @@
 					</svg>
 				</div>
 			</div><!-- /content -->
+			<audio controls id="bgm" preload="auto" style="display: none;">
+				<source src="http://music.163.com/song/media/outer/url?id=584155.mp3" type="audio/mpeg">
+				Your browser does not support this audio format.
+			</audio>
 			<div class="content content--fixed">
 				<div class="content__inner">
 					<nav class="menu">
@@ -97,6 +102,7 @@
 			<script src="js/anime.min.js"></script>
 			<script src="js/demo1.js"></script>
 			<script type="text/javascript" src="js/message.js"></script>
+			<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		</main>
 	</body>
 </html>

@@ -28,16 +28,18 @@
 	const navigate = () => {
 		if ( loaded ) return;
 		loaded = true;
-		setTimeout(confirm({
+		setTimeout(function(){
+			confirm({
 				title: '友情提示',
 				content: '该页面有bgm，宁方便播放吗？',
 				doneText: '方便',
 				cancelText: '不方便'
 			}).then(() => {
+				toggleSound();
 				console.log('已确认');
 			}).catch(() => {
 				console.log('已取消')
-		}), 3000);
+		})}, 500);
 		anime({
 			targets: DOM.intro,
 			duration: 1100,
@@ -110,6 +112,22 @@
 			}
 		});
 	};
+
+	function toggleSound() {
+		var music = document.getElementById("bgm");//获取ID  
+		console.log(music);
+		console.log(music.paused);
+		if (music.paused) { //判读是否播放  
+			music.paused=false;
+			music.play(); //没有就播放 
+			document.addEventListener("WeixinJSBridgeReady", function () {
+				audio.play();
+			}, false);
+			document.addEventListener('YixinJSBridgeReady', function() {
+				audio.play();
+			}, false);
+		}
+	}
 
 	init();
 };
