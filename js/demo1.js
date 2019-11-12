@@ -29,23 +29,10 @@
 		if ( loaded ) return;
 		loaded = true;
 		setTimeout(function(){
-			confirm({
-				title: '友情提示',
-				content: '该页面有bgm，宁方便播放吗？',
-				doneText: '方便',
-				cancelText: '不方便'
-			}).then(() => {
-				toggleSound();
-				var offsetX = $("#loveHeart").width() / 2;
-				var offsetY = $("#loveHeart").height() / 2 - 55;
-				start();
-				console.log('已确认');
-			}).catch(() => {
-				var offsetX = $("#loveHeart").width() / 2;
-				var offsetY = $("#loveHeart").height() / 2 - 55;
-				start();
-				console.log('已取消')
-		})}, 800);
+			var offsetX = $("#loveHeart").width() / 2;
+			var offsetY = $("#loveHeart").height() / 2 - 55;
+			start();
+		}, 800);
 		anime({
 			targets: DOM.intro,
 			duration: 1100,
@@ -150,4 +137,18 @@
 	}
 
 	init();
+	setTimeout(function(){
+			confirm({
+				title: '友情提示',
+				content: '该页面有bgm，宁方便播放吗？',
+				doneText: '方便',
+				cancelText: '不方便'
+			}).then(() => {
+				toggleSound();
+				show_intro();
+				console.log('已确认');
+			}).catch(() => {
+				show_intro();
+				console.log('已取消')
+		})}, 100);
 };
