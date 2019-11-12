@@ -151,12 +151,12 @@
 	            max: 1.5
 	        },
 	        growFactor: {
-	            min: 0.1,
-	            max: 1
+	            min: 0.2,
+	            max: 0.8
 	        },
 	        bloomRadius: {
-	            min: 2,
-	            max: 5
+	            min: 3,
+	            max: 8
 	        },
 	        density: 10,
 	        growSpeed: 1500 / 60,
