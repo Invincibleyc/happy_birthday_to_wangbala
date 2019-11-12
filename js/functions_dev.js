@@ -134,5 +134,32 @@ function adjustCodePosition() {
 }
 
 function showLoveU() {
-	$('#loveu').fadeIn(3000);
+	if(yc_cnt != 0)
+		return true;
+	var theater = new TheaterJS();
+	theater
+		.describe("Word1", .9, "#word1")
+		.describe("Word2", .87, "#word2")
+		.describe("Word3", .87, "#word3")
+		.describe("Word4", .87, "#word4")
+		.describe("Word5", .8, "#word5");
+	theater
+		.on("say:start, erase:start", function (eventName) {
+			var self    = this,
+				current = self.current.voice;
+
+			self.utils.addClass(current, "saying");
+		})
+		.on("say:end, erase:end", function (eventName) {
+			var self    = this,
+				current = self.current.voice;
+
+			self.utils.removeClass(current, "saying");
+		});
+	theater
+		.write("Word1:你以为这就结束了？", 600)
+		.write("Word1:没错，已经结束了，退出去吧~", 600);
+	document.getElementById("word5").style.display= "inline";
+	theater
+		.write("Word5:别戳我");
 }

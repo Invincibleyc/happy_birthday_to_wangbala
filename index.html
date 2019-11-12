@@ -30,9 +30,10 @@
 					<h4 class="content__subtitle" id="cont4" style="font-family: myfont"></h4>
 					<h4 class="content__subtitle" id="cont5" style="font-family: myfont"></h4>
 					<h4 class="content__subtitle" id="cont6" style="font-family: myfont"></h4>
-					<a href="#" class="enter" id="cont7" style="font-family: myfont"></a>
+					<a href="#" class="enter" id="cont7" style="font-family: myfont; display: none;"></a>
 					<script type="text/javascript">
 						var flag = 0;
+						var yc_cnt = 0;
 						(function () {
 							"use strict";
 							var theater = new TheaterJS();
@@ -62,7 +63,7 @@
 								.write("Cont2:开发人员：",300,"Invincible", 300)
 								.write("Cont3:开发语言：",300,"HTML、JavaScript", 300)
 								.write("Cont4:开发背景：",300,"开发该页面的想法萌生于2019年9月28日，准备用来给我姐王甜甜", 1200, -5, 1000, "我姐", 600, "王俪雅",600,"庆生。（手动狗头保命）", 300)
-								.write("Cont5:开发过程：",300,"10月9日初步制定设计思路，后续进行了若干次修改。此后，因实验室事务繁忙，开发过程有所延缓。11月10日正式完成开发部署。", 300)
+								.write("Cont5:开发过程：",300,"10月9日初步制定设计思路，后续进行了若干次修改。此后，因实验室事务繁忙，开发过程有所延缓。11月12日正式完成开发部署。", 300)
 								.write("Cont6:页面内容：",300,"自己看吧，献丑了^_^");
 							setInterval(function(){
 								var str = document.getElementById('cont6').innerText;
@@ -92,8 +93,54 @@
 				<div class="content__inner" id="loveHeart" style="height: 60vh;">
 						<canvas id="garden"></canvas>
 				</div>
-				<div class="content__inner" id="loveHeart" style="height: 60vh;">
-						<canvas id="garden"></canvas>
+				<div class="content__inner" id="sth" style="height: 40vh;">
+					<h4 class="content__subtitle" id="messages" style="font-family: myfont; color: #aaaaaa; display: none; text-align: center; font-size: 1.75em; padding: 0 0 0.75em 0;">生日快乐！希望你每天开心！！！</h4>
+					<h4 class="content__subtitle" id="word1" style="font-family: myfont; color: #8a8a8a;"></h4>
+					<h4 class="content__subtitle" id="word2" style="font-family: myfont; color: #8a8a8a;"></h4>
+					<h4 class="content__subtitle" id="word3" style="font-family: myfont; color: #8a8a8a;"></h4>
+					<h4 class="content__subtitle" id="word4" style="font-family: myfont; color: #8a8a8a;"></h4>
+					<a href="#" class="enter2" id="word5" style="font-family: myfont; color: #8a8a8a; display: none;" onclick="change_cont()"></a>
+					<script type="text/javascript">
+						function change_cont(){
+							var theater = new TheaterJS();
+							theater
+								.describe("Word1", .9, "#word1")
+								.describe("Word2", .87, "#word2")
+								.describe("Word3", .87, "#word3")
+								.describe("Word4", .87, "#word4")
+								.describe("Word5", .8, "#word5");
+							theater
+								.on("say:start, erase:start", function (eventName) {
+									var self    = this,
+										current = self.current.voice;
+
+										self.utils.addClass(current, "saying");
+								})
+								.on("say:end, erase:end", function (eventName) {
+									var self    = this,
+										current = self.current.voice;
+
+									self.utils.removeClass(current, "saying");
+								});
+							switch(yc_cnt){
+								case 0:
+									theater.write("Word1:疼啊，给你能的，再戳一下试试？", 600);
+									yc_cnt = 1;
+									break;
+								case 1:
+									document.getElementById("word5").style.display= "none";
+									theater
+										.write("Word1:好吧好吧，你赢了，这儿还有两句写给你的话。", 600)
+										.write("Word2:第一句：", 600, "有空一起跑步", 1200, -2, 300, "刷剧", 600)
+										.write("Word3:第二句：", 600, "期待与你的未来", 600)
+										.write("Word4:其他的，留给以后，慢慢讲给你听吧~");
+									yc_cnt = 2;
+									break;
+								default:
+									break;
+							}
+						}
+					</script>
 				</div>
 			</div>
 			<script src="js/imagesloaded.pkgd.min.js"></script>

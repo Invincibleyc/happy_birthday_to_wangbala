@@ -121,6 +121,7 @@ a {
 	color: var(--color-link);
 	outline: none;
 	text-align: center;
+	padding: 0.5em 0 0 0;
 }
 
 a:hover,
@@ -375,6 +376,26 @@ main {
 }
 
 .enter span {
+	display: inline-block;
+}
+
+.enter2 {    
+	margin: 6vh 0 0 0;
+	font-size: 1em;
+	letter-spacing: 3px;
+	cursor: pointer;
+	font-weight: bold;
+	white-space: pre;
+	color: var(--color-enter);
+	pointer-events: auto;
+}
+
+.enter2:hover,
+.enter2:focus {    
+	color: var(--color-enter);
+}
+
+.enter2 span {
 	display: inline-block;
 }
 
